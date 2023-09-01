@@ -30,12 +30,24 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request)
     {
-        $name = $request->name;
+        $comment = $request->name;
+        $user_id = $request->user_id;
+        $target = $request->target;
+
+        $request->validate([
+            'comment'=>'required',
+            'target'=>'required',
+            'user_id'=>'required',
+        ]);
+        
         try{
-            //student::create($request->post());
+            Comment::create($request->post());
+            $allcomment = Comment::all()->where('target', 'C++');
             return response()->json([
                 'message' => 'Comment Inserted Successfully!',
-                'comment' => $name
+                'comment' => $request->post(),
+                'allcomment' => $allcomment,
+
             ]);
             
         }catch(\Exception $e){
