@@ -14,7 +14,11 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $allcomment = Comment::all()->where('target', 'C++');
+            return response()->json([
+                'message' => 'Comment Inserted Successfully!',
+                'allcomment' => $allcomment,
+            ]);
     }
 
     /**

@@ -15,3 +15,4 @@ Route::delete('/deletestudent/{id}', [StudentController::class, 'destroy']);
 
 //Route for Comment on laravel
 Route::post('/insertcomment', [CommentController::class, 'store']);
+Route::get('/fetchcomment', [CommentController::class, 'index']);
