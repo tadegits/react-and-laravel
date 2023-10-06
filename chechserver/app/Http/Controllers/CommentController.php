@@ -14,7 +14,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $allcomment = Comment::all()->where('target', 'C++');
+        $allcomment = Comment::where('target', 'C++')->get();
             return response()->json([
                 'message' => 'Comment Inserted Successfully!',
                 'allcomment' => $allcomment,
@@ -46,7 +46,7 @@ class CommentController extends Controller
         
         try{
             Comment::create($request->post());
-            $allcomment = Comment::all()->where('target', 'C++');
+            $allcomment = Comment::where('target', 'C++')->get();
             return response()->json([
                 'message' => 'Comment Inserted Successfully!',
                 'comment' => $request->post(),
