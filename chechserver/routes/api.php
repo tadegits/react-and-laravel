@@ -13,6 +13,9 @@ Route::get('/editstudent/{id}', [StudentController::class, 'edit']);
 Route::post('/updatestudent/{id}', [StudentController::class, 'update']);
 Route::delete('/deletestudent/{id}', [StudentController::class, 'destroy']);
 
+//Route for Creating User Account
+Route::post('/registeruser', [StudentController::class, 'store']);
+
 //Route for Comment on laravel
 Route::post('/insertcomment', [CommentController::class, 'store']);
 Route::get('/fetchcomment', [CommentController::class, 'index']);
